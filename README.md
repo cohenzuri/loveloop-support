@@ -10,7 +10,7 @@ LoveLoop helps couples track and celebrate their relationship activities togethe
 
 This repository hosts the support website for LoveLoop, deployed via GitHub Pages.
 
-**Live URL:** [https://[username].github.io/loveloop-support/](https://[username].github.io/loveloop-support/)
+**Live URL:** [https://cohenzuri.github.io/loveloop-support/](https://cohenzuri.github.io/loveloop-support/)
 
 ## Features
 
