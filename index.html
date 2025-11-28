@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoveLoop Support</title>
+    <title>LoveLoop Help Center</title>
     <style>
         * {
             margin: 0;
@@ -14,261 +14,498 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        /* Header Section */
+        .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header {
+            padding: 80px 20px 100px;
             text-align: center;
-            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header h1 {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 18px 50px 18px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             color: #667eea;
-            font-size: 2.5em;
+            font-size: 20px;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2em;
+            color: #2c3e50;
             margin-bottom: 10px;
         }
         
-        .header p {
-            color: #666;
+        .section-header p {
+            color: #6c757d;
             font-size: 1.1em;
         }
         
-        .section {
-            margin-bottom: 30px;
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
-        .section h2 {
-            color: #667eea;
-            font-size: 1.5em;
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            font-size: 3em;
             margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
         }
         
-        .section h3 {
-            color: #764ba2;
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .card p {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e9ecef;
+            padding: 25px 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            color: #2c3e50;
             font-size: 1.2em;
-            margin-top: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question::before {
+            content: '❓';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .faq-answer {
+            color: #6c757d;
+            padding-left: 40px;
+            line-height: 1.7;
+        }
+        
+        /* Troubleshooting Section */
+        .troubleshooting-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .troubleshooting-section h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+        
+        .troubleshooting-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .troubleshooting-item h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .troubleshooting-item p {
+            color: #6c757d;
             margin-bottom: 10px;
         }
         
-        .section p, .section ul {
-            color: #555;
+        .troubleshooting-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .troubleshooting-item li {
+            color: #6c757d;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .troubleshooting-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-section h2 {
+            font-size: 2em;
             margin-bottom: 15px;
         }
         
-        .section ul {
-            list-style-position: inside;
-            padding-left: 20px;
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
         
-        .section li {
-            margin-bottom: 8px;
-        }
-        
-        .contact-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .contact-box h2 {
-            color: white;
-            border: none;
-            margin-bottom: 20px;
-        }
-        
-        .contact-box a {
+        .btn-contact {
             display: inline-block;
             background: white;
             color: #667eea;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 15px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 10px;
-            transition: transform 0.2s;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .contact-box a:hover {
+        .btn-contact:hover {
             transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
+        /* Footer */
+        .footer {
             text-align: center;
+            padding: 40px 20px;
+            color: #6c757d;
+            background: white;
+            margin-top: 60px;
         }
         
-        .feature-card h4 {
-            color: #667eea;
+        .footer p {
             margin-bottom: 10px;
         }
         
-        .test-account {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+        .footer-links {
+            margin-top: 20px;
         }
         
-        .test-account h3 {
-            color: #856404;
-            margin-top: 0;
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
         }
         
-        .test-account code {
-            background: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.95em;
-            display: inline-block;
-            margin: 5px 0;
+        .footer-links a:hover {
+            color: #764ba2;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-section, .troubleshooting-section, .contact-section {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>❤️ Help Center</h1>
+        <p>Track your love activities together</p>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search for help...">
+            <span class="search-icon">🔍</span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
     <div class="container">
-        <div class="header">
-            <h1>❤️ LoveLoop Support</h1>
-            <p>Track your love activities together</p>
-        </div>
         
-        <div class="section">
+        <!-- Getting Started Cards -->
+        <div class="section-header">
             <h2>Welcome to LoveLoop</h2>
-            <p>LoveLoop helps couples track and celebrate their relationship activities together. Whether it's hugs, kisses, dates, or quality time, LoveLoop makes it easy to set goals and stay connected.</p>
+            <p>Everything you need to get started with tracking your relationship activities</p>
         </div>
         
-        <div class="section">
-            <h2>Getting Started</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Getting Started</h3>
+                <p>Sign up, set up your profile, and start tracking your activities in minutes</p>
+            </div>
             
-            <h3>1. Create Your Account</h3>
-            <p>Sign up with your email and password. Your data is securely stored and synced across all your devices.</p>
+            <div class="card">
+                <div class="card-icon">💑</div>
+                <h3>Partner Pairing</h3>
+                <p>Connect with your partner using QR codes to share activities together</p>
+            </div>
             
-            <h3>2. Choose Your Mode</h3>
-            <ul>
-                <li><strong>Solo Mode:</strong> Track your personal activities without pairing</li>
-                <li><strong>Paired Mode:</strong> Connect with your partner to track shared activities together</li>
-            </ul>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Activity Tracking</h3>
+                <p>Log hugs, kisses, dates, and more with one simple tap</p>
+            </div>
             
-            <h3>3. Pair with Your Partner (Optional)</h3>
-            <p>To pair with your partner:</p>
-            <ul>
-                <li>One person generates a QR code or pairing code from the app</li>
-                <li>The other person scans the QR code or enters the pairing code</li>
-                <li>Start tracking your activities together!</li>
-            </ul>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Weekly Goals</h3>
+                <p>Set personalized targets and celebrate when you achieve them</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">⌚</div>
+                <h3>Apple Watch</h3>
+                <p>Track activities right from your wrist with seamless sync</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Privacy & Security</h3>
+                <p>Your data is encrypted and never shared with third parties</p>
+            </div>
         </div>
-        
-        <div class="section">
-            <h2>Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>📊 Activity Tracking</h4>
-                    <p>Log hugs, kisses, dates, and more</p>
+
+        <!-- How to Get Started -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2>How to Get Started</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Create Your Account</div>
+                <div class="faq-answer">
+                    Sign up with your email and password. Your data is securely stored using Firebase and synced across all your devices.
                 </div>
-                <div class="feature-card">
-                    <h4>🎯 Weekly Goals</h4>
-                    <p>Set and achieve relationship goals together</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Choose Your Mode</div>
+                <div class="faq-answer">
+                    <strong>Solo Mode:</strong> Track your personal activities without pairing<br>
+                    <strong>Paired Mode:</strong> Connect with your partner to track shared activities together
                 </div>
-                <div class="feature-card">
-                    <h4>💑 Partner Sync</h4>
-                    <p>Share progress in real-time with your partner</p>
-                </div>
-                <div class="feature-card">
-                    <h4>📱 Apple Watch</h4>
-                    <p>Track activities right from your wrist</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Pair with Your Partner</div>
+                <div class="faq-answer">
+                    One person generates a QR code or pairing code from the app. The other person scans the QR code or enters the pairing code. Start tracking your activities together!
                 </div>
             </div>
         </div>
-        
-        <div class="section">
-            <h2>Frequently Asked Questions</h2>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
             
-            <h3>Is my data secure?</h3>
-            <p>Yes! All data is securely stored using Firebase with industry-standard encryption. Your personal information and activity data are protected and never shared with third parties.</p>
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure?</div>
+                <div class="faq-answer">
+                    Yes! All data is securely stored using Firebase with industry-standard encryption. Your personal information and activity data are protected and never shared with third parties.
+                </div>
+            </div>
             
-            <h3>Can I use LoveLoop without an account?</h3>
-            <p>Yes! You can use LoveLoop in local mode without creating an account. However, you won't be able to sync across devices or pair with a partner.</p>
+            <div class="faq-item">
+                <div class="faq-question">Can I use LoveLoop without an account?</div>
+                <div class="faq-answer">
+                    Yes! You can use LoveLoop in local mode without creating an account. However, you won't be able to sync across devices or pair with a partner.
+                </div>
+            </div>
             
-            <h3>What happens if I unpair from my partner?</h3>
-            <p>If you unpair, you'll keep your historical data, but you'll no longer see shared progress. You can enable solo mode to continue tracking activities on your own.</p>
+            <div class="faq-item">
+                <div class="faq-question">What happens if I unpair from my partner?</div>
+                <div class="faq-answer">
+                    If you unpair, you'll keep your historical data, but you'll no longer see shared progress. You can enable solo mode to continue tracking activities on your own.
+                </div>
+            </div>
             
-            <h3>How do I change my activity goals?</h3>
-            <p>Go to Settings > Goal Settings to customize your weekly targets for each activity type.</p>
+            <div class="faq-item">
+                <div class="faq-question">How do I change my activity goals?</div>
+                <div class="faq-answer">
+                    Go to Settings > Goal Settings to customize your weekly targets for each activity type.
+                </div>
+            </div>
             
-            <h3>Does LoveLoop work on Apple Watch?</h3>
-            <p>Yes! LoveLoop includes a companion Apple Watch app that syncs with your iPhone.</p>
+            <div class="faq-item">
+                <div class="faq-question">Does LoveLoop work on Apple Watch?</div>
+                <div class="faq-answer">
+                    Yes! LoveLoop includes a companion Apple Watch app that syncs seamlessly with your iPhone.
+                </div>
+            </div>
         </div>
-        
-        <div class="section">
+
+        <!-- Troubleshooting Section -->
+        <div class="troubleshooting-section">
             <h2>Troubleshooting</h2>
             
-            <h3>App is stuck on loading screen</h3>
-            <p>This issue has been fixed in the latest version. If you still experience it:</p>
-            <ul>
-                <li>Force quit the app and reopen it</li>
-                <li>Check your internet connection</li>
-                <li>Make sure you're running the latest version</li>
-            </ul>
+            <div class="troubleshooting-item">
+                <h3>App is stuck on loading screen</h3>
+                <p>This issue has been fixed in the latest version. If you still experience it:</p>
+                <ul>
+                    <li>Force quit the app and reopen it</li>
+                    <li>Check your internet connection</li>
+                    <li>Make sure you're running the latest version</li>
+                </ul>
+            </div>
             
-            <h3>Pairing code not working</h3>
-            <ul>
-                <li>Make sure both users are signed in</li>
-                <li>Verify the pairing code is entered correctly</li>
-                <li>Check that both devices have internet connection</li>
-                <li>Try generating a new pairing code</li>
-            </ul>
+            <div class="troubleshooting-item">
+                <h3>Pairing code not working</h3>
+                <ul>
+                    <li>Make sure both users are signed in</li>
+                    <li>Verify the pairing code is entered correctly</li>
+                    <li>Check that both devices have internet connection</li>
+                    <li>Try generating a new pairing code</li>
+                </ul>
+            </div>
             
-            <h3>Data not syncing</h3>
-            <ul>
-                <li>Check your internet connection</li>
-                <li>Make sure you're signed in to the same account on all devices</li>
-                <li>Force quit and reopen the app</li>
-            </ul>
+            <div class="troubleshooting-item">
+                <h3>Data not syncing</h3>
+                <ul>
+                    <li>Check your internet connection</li>
+                    <li>Make sure you're signed in to the same account on all devices</li>
+                    <li>Force quit and reopen the app</li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="section">
-            <h2>Privacy Policy</h2>
-            <p>We respect your privacy. LoveLoop collects only the data necessary to provide our services:</p>
-            <ul>
-                <li>Account information (email, name)</li>
-                <li>Activity data (tracked activities and goals)</li>
-                <li>Usage analytics (to improve the app)</li>
-            </ul>
-            <p>We never sell or share your personal data with third parties. Your activity data is private between you and your partner (if paired).</p>
-        </div>
-        
-        <div class="contact-box">
-            <h2>Need More Help?</h2>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
             <p>We're here to help! Contact us for support, feedback, or feature requests.</p>
-            <a href="mailto:cohenzuri@gmail.com">cohenzuri@gmail.com</a>
+            <a href="mailto:cohenzuri@gmail.com" class="btn-contact">Contact Support</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>LoveLoop</strong> - Track your love activities together</p>
+        <p>© 2024 LoveLoop. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="mailto:cohenzuri@gmail.com">Contact</a>
         </div>
     </div>
 </body>
 </html>
-
