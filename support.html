@@ -507,5 +507,91 @@
             <a href="mailto:cohenzuri@gmail.com">Contact</a>
         </div>
     </div>
+
+    <script>
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        const cards = document.querySelectorAll('.card');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const troubleshootingItems = document.querySelectorAll('.troubleshooting-item');
+        const sections = document.querySelectorAll('.faq-section, .troubleshooting-section');
+
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            // If search is empty, show everything
+            if (searchTerm === '') {
+                cards.forEach(card => card.style.display = 'block');
+                faqItems.forEach(item => item.style.display = 'block');
+                troubleshootingItems.forEach(item => item.style.display = 'block');
+                sections.forEach(section => section.style.display = 'block');
+                return;
+            }
+            
+            let hasResults = false;
+            
+            // Search through cards
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Search through FAQ items
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Search through troubleshooting items
+            troubleshootingItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide sections based on whether they have visible items
+            sections.forEach(section => {
+                const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"]), .troubleshooting-item:not([style*="display: none"])');
+                if (visibleItems.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+            
+            // Smooth scroll to first result
+            if (hasResults) {
+                const firstVisible = document.querySelector('.card:not([style*="display: none"]), .faq-item:not([style*="display: none"]), .troubleshooting-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // Add enter key support
+        searchBox.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstVisible = document.querySelector('.card:not([style*="display: none"]), .faq-item:not([style*="display: none"]), .troubleshooting-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
